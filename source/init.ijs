@@ -1,0 +1,3 @@
+NB. init
+
+coclass 'timecode'

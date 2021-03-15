@@ -77,12 +77,11 @@ NB. change frame nummber to seconds (useful for ffmpeg)
 sec_from_frame=: 3 : 0
 59 sec_from_frame y
 :
-<. (x:^:_1) y % (({. " 1 FRAMERATES) i. <. x) { {: " 1 FRAMERATES
+(x:^:_1) y % (({. " 1 FRAMERATES) i. <. x) { {: " 1 FRAMERATES
 )
 
-
 NB. -------------------------------------------------------------------------------------------------
-NB. change frame nummber to seconds (useful for ffmpeg)
+NB. change seconds to frame nummber
 
 sec_to_frame=: 3 : 0
 59 sec_to_frame y
@@ -90,12 +89,21 @@ sec_to_frame=: 3 : 0
 <. (x:^:_1) y * (({. " 1 FRAMERATES) i. <. x) { {: " 1 FRAMERATES
 )
 
-
 NB. -------------------------------------------------------------------------------------------------
 NB. change frame number to h m s.s (useful for some edit csv files)
+NB. input is h m s f framerate(59 default)
 
 dftc_to_time=: 3 : 0 
 60 60 60 #: ({.!.59 ] 4}. y) sec_from_frame ({.!.59 ] 4}. y) dftc_to_frame 4 {. y
+)
+
+
+NB. -------------------------------------------------------------------------------------------------
+NB. change frame number to h m s.s (useful for some edit csv files)   rounding to nearest thousandth
+NB. input is h m s f framerate(59 default)
+
+dftc_to_time_r=: 3 : 0 
+60 60 60 #: ({.!.59 ] 4}. y) (1000 %~ [: (<.) 0.5 + 1000 * ]) sec_from_frame ({.!.59 ] 4}. y) dftc_to_frame 4 {. y
 )
 
 
@@ -119,7 +127,9 @@ dftc_to_frame_z_=: dftc_to_frame_timecode_
 dftc_from_frame_z_=: dftc_from_frame_timecode_
 gettc_z_=: gettc_timecode_
 sec_from_frame_z_=: sec_from_frame_timecode_
+sec_to_frame_z_=: sec_to_frame_timecode_
 dftc_to_time_z_=: dftc_to_time_timecode_
+dftc_to_time_r_z_=: dftc_to_time_r_timecode_
 
 fmt_dftc_z_=: fmt_dftc_timecode_
 fmt_tc_z_=: fmt_tc_timecode_

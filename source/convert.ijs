@@ -78,8 +78,27 @@ sec_from_frame=: 3 : 0
 )
 
 NB. -------------------------------------------------------------------------------------------------
+NB. change seconds to frame nummber
+
+sec_to_frame=: 3 : 0
+59 sec_to_frame y
+:
+<. (x:^:_1) y * (({. " 1 FRAMERATES) i. <. x) { {: " 1 FRAMERATES
+)
+
+NB. -------------------------------------------------------------------------------------------------
 NB. change frame number to h m s.s (useful for some edit csv files)
+NB. input is h m s f framerate(59 default)
 
 dftc_to_time=: 3 : 0 
 60 60 60 #: ({.!.59 ] 4}. y) sec_from_frame ({.!.59 ] 4}. y) dftc_to_frame 4 {. y
+)
+
+
+NB. -------------------------------------------------------------------------------------------------
+NB. change frame number to h m s.s (useful for some edit csv files)   rounding to nearest thousandth
+NB. input is h m s f framerate(59 default)
+
+dftc_to_time_r=: 3 : 0 
+60 60 60 #: ({.!.59 ] 4}. y) (1000 %~ [: (<.) 0.5 + 1000 * ]) sec_from_frame ({.!.59 ] 4}. y) dftc_to_frame 4 {. y
 )

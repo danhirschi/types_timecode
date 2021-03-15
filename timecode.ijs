@@ -77,8 +77,19 @@ NB. change frame nummber to seconds (useful for ffmpeg)
 sec_from_frame=: 3 : 0
 59 sec_from_frame y
 :
-(x:^:_1) y % (({. " 1 FRAMERATES) i. <. x) { {: " 1 FRAMERATES
+<. (x:^:_1) y % (({. " 1 FRAMERATES) i. <. x) { {: " 1 FRAMERATES
 )
+
+
+NB. -------------------------------------------------------------------------------------------------
+NB. change frame nummber to seconds (useful for ffmpeg)
+
+sec_to_frame=: 3 : 0
+59 sec_to_frame y
+:
+<. (x:^:_1) y * (({. " 1 FRAMERATES) i. <. x) { {: " 1 FRAMERATES
+)
+
 
 NB. -------------------------------------------------------------------------------------------------
 NB. change frame number to h m s.s (useful for some edit csv files)

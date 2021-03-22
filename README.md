@@ -13,20 +13,20 @@ Broadcast in the Americas uses a rate of about 29.97 frames per second (FPS), an
 
 For timecode this is rounded up to 30 or 60 FPS to allow counting in frames.
 
-If the frame rate is 30 (or 60) FPS, the time code will accurately reflect the real time elapsed.  
+If the frame rate is 30 (or 60) FPS, the timecode will accurately reflect the real time elapsed.  
 
-If the frame rate is 29.97 (or 59.94) FPS, the time code will will read less than the actual elapsed time.  When an hour has elapsed the timecode will read 00:59:56:12 (at 29.97 FPS). Or, conversely when the timecode reads 01:00:00:00, 1 hour, 3.5 seconds have elapsed.
+If the frame rate is 29.97 (or 59.94) FPS, the timecode will will read less than the actual elapsed time.  When an hour has elapsed the timecode will read 00:59:56:12 (at 29.97 FPS). Or, conversely when the timecode reads 01:00:00:00, 1 hour, 3.5 seconds have elapsed.
 
 This makes broadcasting to a schedule difficult (making sure a program will fit within a given time slot).
 
-Drop frame time code was created to make the time code closer to actual elapsed time.
+Drop frame timecode was created to make the timecode closer to actual elapsed time.
 
 Numbers are dropped from the counting of frames.  The number of frames stays the same (107,892 per hour at 29.97 FPS), the labeling has changed.
 
 
 Drop frame timecode skips frame numbers 0 and 1 of the first second of every minute, except when the number of minutes is divisible by ten.
 
-(; is used before the frame element to denote drop frame time code)
+(; is used before the frame element to denote drop frame timecode)
 
 A Sequence of four frames around 8 minutes.  (the frame label jumps from 00:07:59;29 to 00:08:00;02)
 ```
@@ -74,7 +74,7 @@ Math can be a problem, requiring translating timecode to a frame number, doing a
 
 Also, some software packages use real time to locate point within a video.  
 
-This addon has functions to convert text timecode to a time vector, functions to convert timec code to frame number and back, a function to convert to actual time, and functions to formaat a J vector back to text.
+This addon has functions to convert text timecode to a time vector, functions to convert timecode to frame number and back, a function to convert to actual time, and functions to formaat a J vector back to text.
 
 
 
@@ -83,7 +83,7 @@ Text to timecode vector:
 ---------------------------------------------
 This offers flexibility when parsing text sources.  
 
-Edit Decision Lists (EDL) typically only have the timecode on each line.  Drop/Non-Drop Frame is often listed at the top.  ; for drop frame is not guaranteed
+Edit Decision Lists (EDL) typically only have the timecode on each line.  Drop/Non-Drop Frame is often listed at the top.  The use of a semi-colon (;) in drop frame timecode is not always the case.
 
 Some XML projects have the frame rate appended at the end.  ##:##:##:##@##.##
 
@@ -133,8 +133,8 @@ input is  [frames per second, defaulting to 59.94] dftc_from_frame [frame number
    fmt_dftc 59.94 dftc_from_frame 295088
 01:22:03;04
 ```
-In use:
----------------------------------------------
+
+Examples of use:
 
 (add two 30-second elements)
 ```

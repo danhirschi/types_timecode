@@ -196,7 +196,9 @@ Formatting
 ---------------------------------------------
 
 fmt_dftc    h m s f formatted for dropframe uses ;
+
 fmt_tc      h m s f formatted for non-dropframe uses :
+
 fmt_time    h m s.s formatted to thousandths
 
 

@@ -29,26 +29,27 @@ Drop frame timecode skips frame numbers 0 and 1 of the first second of every min
 (; is used before the frame element to denote drop frame time code)
 
 A Sequence of four frames around 8 minutes.  (the frame label jumps from 00:07:59;29 to 00:08:00;02)
-
+```
 00:07:59;28
 00:07:59;29
 00:08:00;02
 00:08:00;03
-
+```
 
 A Sequence of six frames around 10 minutes.  (these is no jump in the frame labels)
+```
 00:09:59;28
 00:09:59;29
 00:10:00;00
 00:10:00;01
 00:10:00;02
 00:10:00;03
-
+```
 Timecode is used in edit decision lists (EDL) AsRun logs (documenting the time of broadcast elements in a playlist), 
 
 
 Drop frame timecode is also defined for 59.94 FPS
-
+```
 00:07:59;58
 00:07:59;59
 00:08:00;04
@@ -63,7 +64,7 @@ Drop frame timecode is also defined for 59.94 FPS
 00:10:00;03
 00:10:00;04
 00:10:00;05
-
+```
 
 ---------------------------------------------
 What this addon solves:
@@ -87,6 +88,7 @@ Some XML projects have the frame rate appended at the end.  ##:##:##:##@##.##
 csv files for Dynamic Ad Insertion (DAI) often use time  ##:##:##:##.###
 
 returned values are [hours], [minutes], [seconds], [frames], [frames per second, defaulting to 59.94], [drop frame flag, 1 or 0]   
+```
    gettc '01:22:03:04'
 1 22 3 4 59.94 0
    gettc '01:22:03:04@29.97'
@@ -100,7 +102,7 @@ returned values are [hours], [minutes], [seconds], [frames], [frames per second,
 if seconds include a decimal point, the return is [hours], [minutes], [seconds as floating point], [not used], [not used], [not used]
    gettc '01:22:03.040'
 1 22 3.04 _ 0 0
-   
+```
 
 ---------------------------------------------
 Converting to frame: 
@@ -108,17 +110,19 @@ Converting to frame:
 (only for drop frame timecode.  24 60 60 30 #. and 24 60 60 60 #. work for non-drop frame)
 
 input is  [frames per second, defaulting to 59.94] dftc_to_frame [hours], [minutes], [seconds], [frames]
+```
    59.94 dftc_to_frame 1 22 3 4 
 295088
    29.94 dftc_to_frame 1 22 3 4 
 147546
-
+```
 ---------------------------------------------
 Converting from frame:  
 ---------------------------------------------
 (only for drop frame timecode.  24 60 60 30 #: and 24 60 60 60 #: work for non-drop frame)
 
 input is  [frames per second, defaulting to 59.94] dftc_from_frame [frame number]
+```
    59.94 dftc_from_frame 295088
 1 22 3 4
    29.94 dftc_from_frame 147546
@@ -126,18 +130,20 @@ input is  [frames per second, defaulting to 59.94] dftc_from_frame [frame number
 
    fmt_dftc 59.94 dftc_from_frame 295088
 01:22:03;04
-
+```
 In use:
 ---------------------------------------------
 
 (add two 30-second elements)
+```
    59.94 dftc_from_frame (59.94 dftc_to_frame 0 0 30 0) + 59.94 dftc_to_frame 0 0 30 0
 0 1 0 4
-
+```
 (compute the length of an element that starts at 0 5 23 4 and ends at 0 7 12 4)
+```
    59.94 dftc_from_frame (59.94 dftc_to_frame 0 7 12 4) - 59.94 dftc_to_frame 0 5 23 4 
 0 1 48 56
-
+```
 
 ---------------------------------------------
 Converting to and from seconds:
@@ -146,7 +152,7 @@ Converting to and from seconds:
 [frames per second, defaulting to 59.94] sec_from_frame [frame number]
 [frames per second, defaulting to 59.94] sec_to_frame [time in seconds]
 
-
+```
    0j5 ": sec_from_frame dftc_to_frame 0 1 30 0
 90.02327
 
@@ -163,7 +169,7 @@ Converting to and from seconds:
 0 2 59 57
    fmt_dftc dftc_from_frame sec_to_frame 180
 00:02:59;57
-
+```
 
 ---------------------------------------------
 Converting to actual time:
@@ -173,7 +179,7 @@ dftc_to_time [hours], [minutes], [seconds], [frames], [frames per second, defaul
 
 Rounds to nearest thousandth
 dftc_to_time_r [hours], [minutes], [seconds], [frames], [frames per second, defaulting to 59.94]
-
+```
    dftc_to_time 0 3 0 4
 0 3 0.0465333
    dftc_to_time_r 0 3 0 4
@@ -183,7 +189,7 @@ dftc_to_time_r [hours], [minutes], [seconds], [frames], [frames per second, defa
 00:03:00.047
    fmt_time dftc_to_time_r 0 3 0 4
 00:03:00.047
-
+```
 
 ---------------------------------------------
 Formatting

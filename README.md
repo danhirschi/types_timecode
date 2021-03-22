@@ -150,6 +150,7 @@ Examples of use:
 ---------------------------------------------
 Converting to and from seconds:
 ---------------------------------------------
+ffmpeg can use seconds to find a loction within a video.  Some EDL formats can use this format as well.
 
 [frames per second, defaulting to 59.94] sec_from_frame [frame number]
 
@@ -177,6 +178,7 @@ Converting to and from seconds:
 ---------------------------------------------
 Converting to actual time:
 ---------------------------------------------
+Another time representation used by some EDL formats.  Files for DAI othen use this as well.
 
 dftc_to_time [hours], [minutes], [seconds], [frames], [frames per second, defaulting to 59.94]
 

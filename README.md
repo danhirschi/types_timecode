@@ -84,7 +84,9 @@ Text to timecode vector:
 This offers flexibility when parsing text sources.  
 
 Edit Decision Lists (EDL) typically only have the timecode on each line.  Drop/Non-Drop Frame is often listed at the top.  ; for drop frame is not guaranteed
+
 Some XML projects have the frame rate appended at the end.  ##:##:##:##@##.##
+
 csv files for Dynamic Ad Insertion (DAI) often use time  ##:##:##:##.###
 
 returned values are [hours], [minutes], [seconds], [frames], [frames per second, defaulting to 59.94], [drop frame flag, 1 or 0]   
@@ -150,6 +152,7 @@ Converting to and from seconds:
 ---------------------------------------------
 
 [frames per second, defaulting to 59.94] sec_from_frame [frame number]
+
 [frames per second, defaulting to 59.94] sec_to_frame [time in seconds]
 
 ```

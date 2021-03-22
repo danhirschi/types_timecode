@@ -9,7 +9,7 @@ Video frames are numbered in the format hours:minutes:seconde:frames (01:00:23:0
 
 There are several frame rates possible.
 
-Broadcast in the Americas uses a rate of about 29.97 frames per second (FPS), and with HDTV, an option to use 59.94 FPS.*
+Broadcast in the Americas uses a rate of about 29.97 frames per second (FPS), and with HDTV, an option to use 59.94 FPS.\*
 
 For timecode this is rounded up to 30 or 60 FPS to allow counting in frames.
 
@@ -208,7 +208,7 @@ fmt_time    h m s.s formatted to thousandths
 
 
 ---------------------------------------------
-* The actual frame rates are defined as 60 * 1000 / 1001 and 30 * 1000 / 1001.
+\* The actual frame rates are defined as 60 \* 1000 / 1001 and 30 \* 1000 / 1001.
 
 
 

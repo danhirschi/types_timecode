@@ -90,7 +90,7 @@ sec_to_frame=: 3 : 0
 )
 
 NB. -------------------------------------------------------------------------------------------------
-NB. change frame number to h m s.s (useful for some edit csv files)
+NB. change timecode to h m s.s (useful for some edit csv files)
 NB. input is h m s f framerate(59 default)
 
 dftc_to_time=: 3 : 0 
@@ -99,12 +99,23 @@ dftc_to_time=: 3 : 0
 
 
 NB. -------------------------------------------------------------------------------------------------
-NB. change frame number to h m s.s (useful for some edit csv files)   rounding to nearest thousandth
+NB. change timecode to h m s.s (useful for some edit csv files)   rounding to nearest thousandth
 NB. input is h m s f framerate(59 default)
 
 dftc_to_time_r=: 3 : 0 
-60 60 60 #: ({.!.59 ] 4}. y) (1000 %~ [: (<.) 0.5 + 1000 * ]) sec_from_frame ({.!.59 ] 4}. y) dftc_to_frame 4 {. y
+60 60 60 #:  _3 round_dec ({.!.59 ] 4}. y) sec_from_frame ({.!.59 ] 4}. y) dftc_to_frame 4 {. y
 )
+
+
+NB. -------------------------------------------------------------------------------------------------
+NB. round to other than nearest 1
+
+NB. '(10^x) * <. 0.5 + y * 10^-x'
+NB. round results  [level, _3 for thousandths, 2 to nearest 100] round_dec [input]
+round_dec=: (10 ^ [) * [: (<.) 0.5 + ] * 10 ^ [: - [
+
+
+
 
 
 NB. -------------------------------------------------------------------------------------------------
@@ -130,6 +141,7 @@ sec_from_frame_z_=: sec_from_frame_timecode_
 sec_to_frame_z_=: sec_to_frame_timecode_
 dftc_to_time_z_=: dftc_to_time_timecode_
 dftc_to_time_r_z_=: dftc_to_time_r_timecode_
+round_dec_z_=: round_dec_timecode_
 
 fmt_dftc_z_=: fmt_dftc_timecode_
 fmt_tc_z_=: fmt_tc_timecode_

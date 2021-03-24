@@ -74,7 +74,7 @@ Math can be a problem, requiring translating timecode to a frame number, doing a
 
 Also, some software packages use real time to locate point within a video.  
 
-This addon has functions to convert text timecode to a time vector, functions to convert timecode to frame number and back, a function to convert to actual time, and functions to formaat a J vector back to text.
+This addon has functions to convert text timecode to a time vector, functions to convert timecode to frame number and back, a function to convert to actual time, and functions to format a J vector back to text.
 
 
 

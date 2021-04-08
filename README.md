@@ -45,7 +45,7 @@ A Sequence of six frames around 10 minutes.  (these is no jump in the frame labe
 00:10:00;02
 00:10:00;03
 ```
-Timecode is used in edit decision lists (EDL) AsRun logs (documenting the time of broadcast elements in a playlist), 
+Timecode is used in edit decision lists (EDL) and in AsRun logs (documenting the time of broadcast elements in a playlist), 
 
 
 Drop frame timecode is also defined for 59.94 FPS
